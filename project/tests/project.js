@@ -24,6 +24,20 @@ const main = async () => {
 
   let account = await program.account.baseAccount.fetch(baseAccount.publicKey);
   console.log("👀 GIF Count", account.totalGifs.toString());
+
+  await program.rpc.addGif(
+    "https://media0.giphy.com/media/YPPdMBEKyQFm4T6wtK/giphy.gif?cid=790b76115ec7e64343dc578a9207042aed7c560be8662b03&rid=giphy.gif&ct=g",
+    {
+      accounts: {
+        baseAccount: baseAccount.publicKey,
+      },
+    }
+  );
+
+  account = await program.account.baseAccount.fetch(baseAccount.publicKey);
+  console.log("👀 GIF Count", account.totalGifs.toString());
+
+  console.log("👀 GIF List", account.gifList);
 };
 
 const runMain = async () => {
