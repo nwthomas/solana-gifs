@@ -7,10 +7,10 @@ const TWITTER_HANDLE = "nwthomas_";
 const TWITTER_LINK = `https://twitter.com/${TWITTER_HANDLE}`;
 
 const TEST_GIFS = [
-  "https://i.giphy.com/media/eIG0HfouRQJQr1wBzz/giphy.webp",
-  "https://media3.giphy.com/media/L71a8LW2UrKwPaWNYM/giphy.gif?cid=ecf05e47rr9qizx2msjucl1xyvuu47d7kf25tqt2lvo024uo&rid=giphy.gif&ct=g",
-  "https://media4.giphy.com/media/AeFmQjHMtEySooOc8K/giphy.gif?cid=ecf05e47qdzhdma2y3ugn32lkgi972z9mpfzocjj6z1ro4ec&rid=giphy.gif&ct=g",
-  "https://i.giphy.com/media/PAqjdPkJLDsmBRSYUp/giphy.webp",
+  "https://64.media.tumblr.com/442513caac35229ccdd5e39fe822d6bf/f5c2981514e757fd-01/s500x750/a644d95d7d0936a19d19c5737e071711edfb489c.gifv",
+  "https://media0.giphy.com/media/3ornjSL2sBcPflIDiU/giphy.gif?cid=790b7611555077c08045202155f9793478aac166ca13dca2&rid=giphy.gif&ct=g",
+  "https://media2.giphy.com/media/3o7abB06u9bNzA8lu8/giphy.gif?cid=790b761117f624da6cf7156e60690e5c6996775a6b388278&rid=giphy.gif&ct=g",
+  "https://64.media.tumblr.com/7845da923c4dc12408bb731c0030a1b6/tumblr_mx5p8wJNty1rk2xpdo1_540.gifv",
 ];
 
 const App = () => {
@@ -67,15 +67,30 @@ const App = () => {
     );
   };
 
+  const renderConnectedContainer = () => (
+    <div className="connected-container">
+      <input type="text" placeholder="Enter gif link!" />
+      <button className="cta-button submit-gif-button">Submit</button>
+      <div className="gif-grid">
+        {TEST_GIFS.map((gif) => (
+          <div className="gif-item" key={gif}>
+            <img src={gif} alt={gif} />
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+
   return (
     <div className="App">
       <div className={walletAddress ? "authed-container" : "container"}>
         <div className="header-container">
-          <p className="header">🖼 GIF Portal</p>
+          <p className="header">🖼 Star Wars Gifs</p>
           <p className="sub-text">
-            View your GIF collection in the metaverse ✨
+            View the Star Wars GIF collection in the metaverse ✨
           </p>
           {!walletAddress ? renderNotConnnectedContainer() : null}
+          {walletAddress ? renderConnectedContainer() : null}
         </div>
         <div className="footer-container">
           <img alt="Twitter Logo" className="twitter-logo" src={twitterLogo} />
