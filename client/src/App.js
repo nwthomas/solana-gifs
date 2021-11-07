@@ -23,13 +23,6 @@ const opts = {
 const TWITTER_HANDLE = "nwthomas_";
 const TWITTER_LINK = `https://twitter.com/${TWITTER_HANDLE}`;
 
-// const TEST_GIFS = [
-//   "https://64.media.tumblr.com/442513caac35229ccdd5e39fe822d6bf/f5c2981514e757fd-01/s500x750/a644d95d7d0936a19d19c5737e071711edfb489c.gifv",
-//   "https://media0.giphy.com/media/3ornjSL2sBcPflIDiU/giphy.gif?cid=790b7611555077c08045202155f9793478aac166ca13dca2&rid=giphy.gif&ct=g",
-//   "https://media2.giphy.com/media/3o7abB06u9bNzA8lu8/giphy.gif?cid=790b761117f624da6cf7156e60690e5c6996775a6b388278&rid=giphy.gif&ct=g",
-//   "https://64.media.tumblr.com/7845da923c4dc12408bb731c0030a1b6/tumblr_mx5p8wJNty1rk2xpdo1_540.gifv",
-// ];
-
 const App = () => {
   const [walletAddress, setWalletAddress] = React.useState(null);
   const [inputValue, setInputValue] = React.useState("");
@@ -86,6 +79,7 @@ const App = () => {
     if (walletAddress) {
       getGifList();
     }
+    // eslint-disable-next-line
   }, [walletAddress]);
 
   const connectWallet = async () => {
@@ -198,7 +192,7 @@ const App = () => {
           {/* We use index as the key instead, also, the src is now item.gifLink */}
           {gifList.map((item, index) => (
             <div className="gif-item" key={index}>
-              <img src={item.gifLink} />
+              <img src={item.gifLink} alt="star wars gif" />
             </div>
           ))}
         </div>
